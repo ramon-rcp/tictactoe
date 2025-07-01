@@ -28,3 +28,9 @@ To run the project locally, follow these steps:
 
 5. Open your browser and go to `http://localhost:3000` to play the game.
 
+## Server Side
+Server code can be found at [Backend-Render](https://github.com/ramon-rcp/Backend-Render), in the following files:
+```
+routes.py
+tictactoe.py
+```
