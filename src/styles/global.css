@@ -4,38 +4,42 @@ body {
   font-family: 'Segoe UI', Arial, sans-serif;
   background: #f7f7f7;
   color: #222;
-}
-
-h1, h2, h3 {
-  text-align: center;
-  margin-top: 1.5rem;
+  display: flex; /* Add flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100vh; /* Full viewport height */
 }
 
 .tictactoe-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 3rem;
+}
+
+h1, h2, h3 {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 3.5rem; /* Further increase font size for headings */
 }
 
 .board {
   display: grid;
-  grid-template-columns: repeat(3, 80px);
-  grid-template-rows: repeat(3, 80px);
-  gap: 10px;
+  grid-template-columns: repeat(3, 150px); /* Increase square size */
+  grid-template-rows: repeat(3, 150px); /* Increase square size */
+  gap: 20px; /* Increase gap between squares */
   background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  padding: 40px; /* Increase padding around the board */
 }
 
 .square {
-  width: 80px;
-  height: 80px;
+  width: 150px; /* Match new square size */
+  height: 150px; /* Match new square size */
   background: #e0e0e0;
   border: none;
-  border-radius: 8px;
-  font-size: 2.5rem;
+  border-radius: 10px;
+  font-size: 4.5rem; /* Further increase font size for square content */
   font-weight: bold;
   color: #333;
   cursor: pointer;
@@ -47,20 +51,20 @@ h1, h2, h3 {
 }
 
 .status {
-  margin: 1.5rem 0 1rem 0;
-  font-size: 1.2rem;
-  font-weight: 500;
+  margin: 2rem 0 1.5rem 0;
+  font-size: 2rem; /* Further increase font size for status text */
+  font-weight: 600;
   text-align: center;
 }
 
 .reset-btn {
-  margin-top: 1.5rem;
-  padding: 0.5rem 1.5rem;
+  margin-top: 2rem;
+  padding: 0.75rem 2rem;
   background: #7e57c2;
   color: #fff;
   border: none;
-  border-radius: 6px;
-  font-size: 1rem;
+  border-radius: 8px;
+  font-size: 1.25rem; /* Increase font size for reset button */
   cursor: pointer;
   transition: background 0.2s;
 }
