@@ -2,20 +2,26 @@ import React, { Component } from "react";
 import "../styles/global.css";
 import { MouseEvent } from "react";
 
-const apiURL: string = "https://backend-render-c5uf.onrender.com/api/tictactoe";
+export const apiURL: string = "https://backend-render-c5uf.onrender.com/api/tictactoe";
 
 type GameState = {
     turn: "Your turn" | "AI's turn",
     board?: string[],
     player: "X" | "O",
+    winner: "X" | "O" | "Draw" | null
 }
 
-export class Game extends Component<{}, GameState> {
-    constructor(props: {}) {
+type GameProps = {
+    openGameFinished: (winner: "WIN!!" | "YOU LOSE" | "DRAW", board: string[]) => void;
+}
+
+export class Game extends Component<GameProps, GameState> {
+    constructor(props: GameProps) {
         super(props);
         this.state = {
             turn: "AI's turn",
             player: "O",
+            winner: null,
         }
     }
 
@@ -29,7 +35,19 @@ export class Game extends Component<{}, GameState> {
             this.makeAImove();
         } 
 
-        return <div>
+        if(this.state.winner !== null) {
+            if (this.state.winner === "Draw") {
+                this.props.openGameFinished("DRAW", this.state.board);
+            }
+            else if (this.state.winner === this.state.player) {
+                this.props.openGameFinished("WIN!!", this.state.board);
+            } else {
+                this.props.openGameFinished("YOU LOSE", this.state.board);
+            }
+            return <div className="spinner"/>
+        }
+
+        return <div className="tictactoe-container">
             <h1>{this.state.turn}</h1>
             <div className="board">
                 {this.renderSquares()}
@@ -58,6 +76,7 @@ export class Game extends Component<{}, GameState> {
                 this.setState({
                     board: data.board,
                     turn: (data.current_player === this.state.player) ? "Your turn" : "AI's turn",
+                    winner: data.winner,
                 });
             })
             .catch(error => {
@@ -72,6 +91,7 @@ export class Game extends Component<{}, GameState> {
                 this.setState({
                     board: data.board,
                     turn: "Your turn",
+                    winner: data.winner,
                 });
 
             })
@@ -105,6 +125,7 @@ export class Game extends Component<{}, GameState> {
                 this.setState({
                     board: data.board,
                     turn: "AI's turn",
+                    winner: data.winner,
                 });
             })
             .catch(error => {
