@@ -86,7 +86,7 @@ export class App extends Component<{}, AppState> {
     }
 
     resetGame = (): void => {
-        fetch(apiURL + "/reset")
+        fetch(apiURL + "/reset?key=" + String(this.state.key))
             .then(response => response.json())
             .then(data => {
                 console.log("Game reset", data);
