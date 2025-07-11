@@ -1,6 +1,6 @@
 # Tic Tac Toe Game
 
-This is a simple Tic Tac Toe game built with React and TypeScript. The game allows two players to take turns marking the squares in a 3x3 grid with 'X' and 'O'. The first player to align three of their marks horizontally, vertically, or diagonally wins the game.
+This is a simple Tic Tac Toe game built with React and TypeScript. The game allows two players to take turns marking the squares in a 3x3 grid with 'X' and 'O'. The first player to align three of their marks horizontally, vertically, or diagonally wins the game.[Play Game](https://ramon-rcp.github.io/tictactoe/)
 
 ## Getting Started
 
