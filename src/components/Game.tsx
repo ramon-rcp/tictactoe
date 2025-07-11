@@ -8,20 +8,24 @@ type GameState = {
     turn: "Your turn" | "AI's turn",
     board?: string[],
     player: "X" | "O",
-    winner: "X" | "O" | "Draw" | null
+    winner: "X" | "O" | "Draw" | null,
+    key: number
 }
 
 type GameProps = {
     openGameFinished: (winner: "WIN!!" | "YOU LOSE" | "DRAW", board: string[]) => void;
+    getKey: () => number
 }
 
 export class Game extends Component<GameProps, GameState> {
     constructor(props: GameProps) {
         super(props);
+        console.log("Game component initialized with key:", props.getKey());
         this.state = {
             turn: "AI's turn",
             player: "O",
             winner: null,
+            key: props.getKey(),
         }
     }
 
@@ -70,7 +74,7 @@ export class Game extends Component<GameProps, GameState> {
     }
 
     getState = (): void => {
-        fetch(apiURL + "/state")
+        fetch(apiURL + "/state?key=" + String(this.state.key))
             .then(response => response.json())
             .then(data => {
                 this.setState({
@@ -85,7 +89,7 @@ export class Game extends Component<GameProps, GameState> {
     }
 
     makeAImove = (): void => {
-        fetch(apiURL + "/ai-move")
+        fetch(apiURL + "/ai-move?key=" + String(this.state.key))
             .then(response => response.json())
             .then(data => {
                 this.setState({
@@ -119,7 +123,7 @@ export class Game extends Component<GameProps, GameState> {
             console.error("Invalid move index");
             return;
         }
-        fetch(apiURL + "/move?position=" + index)
+        fetch(apiURL + "/move?position=" + index + "&key=" + String(this.state.key))
             .then(response => response.json())
             .then(data => {
                 this.setState({
