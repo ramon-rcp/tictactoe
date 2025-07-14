@@ -15,6 +15,7 @@ type GameState = {
 type GameProps = {
     openGameFinished: (winner: "WIN!!" | "YOU LOSE" | "DRAW", board: string[]) => void;
     getKey: () => number
+    getPlayer: () => "X" | "O"
 }
 
 export class Game extends Component<GameProps, GameState> {
@@ -23,7 +24,7 @@ export class Game extends Component<GameProps, GameState> {
         console.log("Game component initialized with key:", props.getKey());
         this.state = {
             turn: "AI's turn",
-            player: "O",
+            player: props.getPlayer(),
             winner: null,
             key: props.getKey(),
         }
