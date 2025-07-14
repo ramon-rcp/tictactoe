@@ -47,9 +47,26 @@ h1, h2, h3 {
   transition: background 0.2s, color 0.2s;
 }
 
-.square:hover {
+.square:hover,:focus {
   background: #e53484; /* Bright pink on hover */
   color: #faf6f6; /* Light text color on hover */
+}
+
+.chosen-square {
+  width: 150px;
+  height: 150px;
+  background: #e53484; /* Light background for squares */
+  border: none;
+  border-radius: 10px;
+  font-size: 4.5rem;
+  font-weight: bold;
+  color: #faf6f6; /* Deep purple for square content */
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.space {
+  padding: 20px; /* Space between buttons */
 }
 
 .status {
