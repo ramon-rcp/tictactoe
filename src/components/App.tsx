@@ -30,7 +30,7 @@ export class App extends Component<{}, AppState> {
             if (this.state.key === undefined) {
                 throw new Error("Game key is undefined. Please create a game first.");
             }
-            return <Game openGameFinished={this.openGameFinished} getKey={this.getKey}/>
+            return <Game openGameFinished={this.openGameFinished} getKey={this.getKey} getPlayer={this.getPlayer}/>
         }
         else if (this.state.playState === "finished") {
             return this.renderFinished();
@@ -76,6 +76,7 @@ export class App extends Component<{}, AppState> {
                 }    
             </div>
             <button className="reset-btn" onClick={this.createGame}>Play Again</button>
+            <button className="reset-btn" onClick={this.openMenu}>Back to Menu</button>
         </div>
     }
 
@@ -84,7 +85,18 @@ export class App extends Component<{}, AppState> {
         this.setState({
             playState: "finished",
             winner: winner,
-            endBoard: board
+            endBoard: board,
+            isloading: false,
+        });
+    }
+
+    openMenu = (): void => {
+        this.setState({
+            playState: "start",
+            winner: undefined,
+            endBoard: undefined,
+            key: undefined,
+            isloading: false,
         });
     }
 
@@ -119,5 +131,9 @@ export class App extends Component<{}, AppState> {
             throw new Error("Game key is undefined. Please create a game first.");
         }
         return this.state.key;
+    }
+
+    getPlayer = (): "X" | "O" => {
+        return this.state.player;
     }
 }
