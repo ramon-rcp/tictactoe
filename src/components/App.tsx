@@ -52,16 +52,20 @@ export class App extends Component<{}, AppState> {
         return <div className='tictactoe-container'>
             <h1>Tic Tac Toe</h1>
             <p className='status'>Welcome to the Tic Tac Toe game!</p>
+            <p className='status'>Do you want the first turn?</p>
             <div>
-                <p className='status'>Do you want the first turn?</p>
                 <button className={(this.state.playerStarts) ? 'chosen-diff' : "reset-btn"} onClick={() => this.setState({playerStarts: true})}>Yes</button>
+                <span className='space'></span>
                 <button className={(this.state.playerStarts) ? "reset-btn" : 'chosen-diff'} onClick={() => this.setState({playerStarts: false})}>No</button>
             </div>
             <p className='status'>Choose a difficulty:</p>
             <div>
                 <button className={(this.state.difficulty === "easy") ? 'chosen-diff' : "reset-btn"} onClick={() => this.setState({difficulty: "easy"})}>Easy</button>
+                <span className='space'></span>
                 <button className={(this.state.difficulty === "medium") ? 'chosen-diff' : "reset-btn"} onClick={() => this.setState({difficulty: "medium"})}>Medium</button>
+                <span className='space'></span>
                 <button className={(this.state.difficulty === "hard") ? 'chosen-diff' : "reset-btn"} onClick={() => this.setState({difficulty: "hard"})}>Hard</button>
+                <span className='space'></span>
                 <button className={(this.state.difficulty === "impossible") ? 'chosen-diff' : "reset-btn"} onClick={() => this.setState({difficulty: "impossible"})}>Impossible</button>
             </div>
             <p className='status'>Choose who to play as (circles play first):</p>
