@@ -96,6 +96,18 @@ h1, h2, h3 {
   background: #848fe1; /* Light purple on hover */
 }
 
+.chosen-diff {
+  margin-top: 2rem;
+  padding: 0.75rem 2rem;
+  background: #848fe1; 
+  color: #faf6f6; /* Light text color for button */
+  border: none;
+  border-radius: 8px;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
 .spinner {
   border: 4px solid #f3f3f3;
   border-top: 4px solid #3498db;
@@ -110,4 +122,4 @@ h1, h2, h3 {
   100% { transform: rotate(360deg); }
 }
 
-/*# sourceMappingURL=57dbb21020f6a0aa949c.css.map*/
+/*# sourceMappingURL=a4f34fe29c6fa3b2da9a.css.map*/
