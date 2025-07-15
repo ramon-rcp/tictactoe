@@ -120,7 +120,7 @@ export class App extends Component<{}, AppState> {
         this.setState({isloading: true});
         let ai: string = (this.state.player === "X") ? "O" : "X";
         let startingPlayer: string = (this.state.playerStarts) ? this.state.player : ai;
-        fetch(apiURL + "/start?ai_player="+ai+"&opponent_player="+this.state.player+"&starting_player="+startingPlayer)
+        fetch(apiURL + "/start?ai_player="+ai+"&opponent_player="+this.state.player+"&starting_player="+startingPlayer+"&difficulty="+this.state.difficulty)
             .then(response => response.json())
             .then(data => {
                 console.log("Game created", data);
