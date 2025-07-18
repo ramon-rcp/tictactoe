@@ -68,7 +68,7 @@ export class App extends Component<{}, AppState> {
                 <span className='space'></span>
                 <button className={(this.state.difficulty === "impossible") ? 'chosen-diff' : "reset-btn"} onClick={() => this.setState({difficulty: "impossible"})}>Impossible</button>
             </div>
-            <p className='status'>Choose who to play as (circles play first):</p>
+            <p className='status'>Choose who to play as:</p>
             <div>
                 <button className={(this.state.player === "X") ? "chosen-square" : "square"} onClick={() => this.setState({player: "X"})}>X</button>
                 <span className='space'></span>
